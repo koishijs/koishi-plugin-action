@@ -8,6 +8,7 @@ export const SegmentTypeMatcher = Schema.object({
   type:Schema.const('segment_type').required(),
   segment_type:Schema.union([
     Schema.const("xml").description("XML卡片消息"),
+    Schema.const("json").description("JSON卡片消息"),
     Schema.const("quote").description("引用消息"),
     Schema.const("at").description("艾特消息"),
     Schema.const("file").description("文件消息"),
