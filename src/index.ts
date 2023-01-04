@@ -17,7 +17,7 @@ export const Config: Schema<Config> = Schema.object({
   actions:Schema.array(Schema.object({
     name:Schema.string().description("规则名称"),
     matchers:Schema.array(Matcher).description("匹配器,只有所有匹配器都满足才会执行Actions中的内容"),
-    actions:Schema.array(Action).description("执行器,执行一些事务")
+    actions:Schema.array(Action).description("执行器,做一些事情")
   }))
 }) as any;
 

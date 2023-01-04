@@ -39,8 +39,12 @@ export type Action = RecallAction | SendMessageAction | MuteAction
 
 export const Action = Schema.intersect([
   Schema.object({
-    type:Schema.union(['mute','recall','send_message'])
-  }),
+    type:Schema.union([
+      Schema.const("mute").description("禁言用户"),
+      Schema.const("recall").description("撤回消息"),
+      Schema.const("send_message").description("发送消息")
+    ])
+  }).description("操作类型"),
   Schema.union([RecallAction,SendMessageAction,MuteAction] as const)
 ])
 

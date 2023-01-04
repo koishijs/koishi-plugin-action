@@ -31,7 +31,6 @@ export const MessageContentMatcher = Schema.object({
   regex:Schema.boolean().description("是否启用正则表达式功能").default(true),
   content:Schema.string().description("要匹配的内容").required()
 }).description("匹配原始消息内容")
-
 export function messageContentMatcher(session:Session,config:MessageContentMatcher){
   if(config.regex)
     return !!session.content.match(new RegExp(config.content));
@@ -41,9 +40,12 @@ export function messageContentMatcher(session:Session,config:MessageContentMatch
 export type Matcher = MessageContentMatcher | SegmentTypeMatcher;
 export const Matcher = Schema.intersect([
   Schema.object({
-    type:Schema.union(['message_content','segment_type']).required()
+    type:Schema.union([
+      Schema.const("message_content").description("匹配原始消息内容"),
+      Schema.const("segment_type").description("匹配消息类型")
+    ]).required()
   }),
-  Schema.union([MessageContentMatcher , SegmentTypeMatcher] as const)
+  Schema.union([MessageContentMatcher, SegmentTypeMatcher] as const)
 ])
 export const matchers = {
   message_content:messageContentMatcher,
