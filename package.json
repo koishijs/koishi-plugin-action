@@ -1,7 +1,7 @@
 {
   "name": "koishi-plugin-action",
   "description": "Run some simple logic in koishi using action!",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "author": "TimeBather <open-source@timebather.cn>",
   "repository": {
     "type": "git",
