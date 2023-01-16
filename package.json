@@ -1,0 +1,26 @@
+{
+  "name": "koishi-plugin-action",
+  "description": "Run some simple logic in koishi using action!",
+  "version": "0.1.1",
+  "author": "TimeBather <open-source@timebather.cn>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/TimeBather/koishi-plugin-action"
+  },
+  "main": "lib/index.js",
+  "typings": "lib/index.d.ts",
+  "files": [
+    "lib",
+    "dist"
+  ],
+  "license": "MIT",
+  "scripts": {},
+  "keywords": [
+    "chatbot",
+    "koishi",
+    "plugin"
+  ],
+  "peerDependencies": {
+    "koishi": "^4.11.0"
+  }
+}
