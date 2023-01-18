@@ -21,19 +21,19 @@ export const Config:Schema<Config>=Schema.object({
     triggers:Schema.array(
         Schema.object({
           type:Schema.string(),
-          config:Schema.dict(Schema.string())
+          config:Schema.any()
         })
     ),
     matchers:Schema.array(
       Schema.object({
         type:Schema.string(),
-        config:Schema.dict(Schema.string())
+        config:Schema.any()
       })
     ),
     actions:Schema.array(
       Schema.object({
         type:Schema.string(),
-        config:Schema.dict(Schema.string())
+        config:Schema.any()
       })
     )
   }))
