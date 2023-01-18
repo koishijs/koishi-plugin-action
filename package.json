@@ -5,7 +5,7 @@
   "author": "TimeBather <open-source@timebather.cn>",
   "repository": {
     "type": "git",
-    "url": "https://github.com/TimeBather/koishi-plugin-action"
+    "url": "https://github.com/koishijs/koishi-plugin-action"
   },
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
