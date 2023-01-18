@@ -1,4 +1,4 @@
-import {Matcher} from "./registry";
+import {Matcher} from "./runtime";
 import {Schema} from "koishi";
 
 const AlwaysExecuteMatcher : Matcher = {

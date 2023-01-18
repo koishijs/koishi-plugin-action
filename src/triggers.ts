@@ -1,5 +1,5 @@
 import {Events} from "koishi";
-import {Trigger} from "./registry";
+import {Trigger} from "./runtime";
 
 export function EventTriggerFactory<T extends keyof Events>(event_name:T):Trigger {
   return {

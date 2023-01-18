@@ -1,5 +1,5 @@
 import { Context, Schema } from 'koishi'
-import {ActionService, Workflow} from "./registry";
+import {ActionService, Workflow} from "./runtime";
 import {PreRegisteredTriggers} from "./triggers";
 import {PreRegisteredMatchers} from "./matchers";
 import {PreRegisteredActions} from "./actions";

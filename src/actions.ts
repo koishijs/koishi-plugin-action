@@ -1,4 +1,4 @@
-import {Action} from "./registry";
+import {Action} from "./runtime";
 import {Schema} from "koishi";
 
 const LoggerAction : Action = {
