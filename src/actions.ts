@@ -44,9 +44,18 @@ const RecallMessageAction : Action = {
   }
 }
 
+const KickMemberAction : Action = {
+  id: "kick-member",
+  async run(ctx,config,features){
+    if(features.session && features.session.guildId)
+      await features.session.bot.kickGuildMember(features.session.guildId,features.session.userId)
+  }
+}
+
 export const PreRegisteredActions = [
   LoggerAction,
   SendMessageAction,
   MuteAction,
-  RecallMessageAction
+  RecallMessageAction,
+  KickMemberAction
 ]
