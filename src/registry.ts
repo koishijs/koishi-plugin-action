@@ -92,7 +92,7 @@ export class ActionService extends Service {
       const matcher_instance = this.matchers.get(matcher.type)
       const config = matcher_instance.Config?.(matcher.config)
       return async (futures) => (!matcher_instance.features ||matcher_instance.features.every(t=>futures[t]))
-        && await matcher_instance.match(ctx, config, futures) && action_callback();
+        && await matcher_instance.match(ctx, config, futures) && action_callback(futures);
     })
 
     if(!workflow.matchers.length){
