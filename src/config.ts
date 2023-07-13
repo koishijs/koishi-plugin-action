@@ -39,7 +39,7 @@ export const SendMessageAction = Schema.object({
 
 export const MuteAction = Schema.object({
     type: Schema.const('mute').required(),
-    time: Schema.number().min(0).description("禁言时长 (单位: 未知)")
+    time: Schema.number().min(0).description("禁言时长 (单位: 毫秒)")
 })
 
 export const Action = Schema.intersect([
