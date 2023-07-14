@@ -1,54 +1,65 @@
-import {Action} from "./runtime";
-import {Schema} from "koishi";
+import { Action, EntityConfig } from "./runtime"
+import { Schema } from "koishi"
 
-const LoggerAction : Action = {
+interface LoggerActionConfig {
+  message: string
+}
+const LoggerAction: Action<LoggerActionConfig> = {
   id: "logger",
-  run(ctx,config,features){
-    ctx.logger("action-logger").info(config);
+  description: "打印日志",
+  Config: Schema.object({
+    message: Schema.string().description('日志内容').required()
+  }),
+  run(ctx, config, features) {
+    ctx.logger("action-logger").info(config.message)
   }
 }
 
-interface SendMessageActionConfig{
-  message:string
+interface SendMessageActionConfig {
+  message: string
 }
-const SendMessageAction : Action<SendMessageActionConfig> = {
+const SendMessageAction: Action<SendMessageActionConfig> = {
   id: "send-message",
-  Config:Schema.object({
-    message:Schema.string()
+  description: "发送消息",
+  Config: Schema.object({
+    message: Schema.string().description('消息内容').required()
   }),
-  async run(ctx,config,features){
-    if(features.session && features.session.channelId)
+  async run(ctx, config, features) {
+    if (features.session && features.session.channelId)
       await features.session.send(config.message)
   }
 }
 
-interface MuteActionConfig{
-  time:number
+interface MuteActionConfig {
+  time: number
 }
-const MuteAction : Action<MuteActionConfig> = {
+const MuteAction: Action<MuteActionConfig> = {
   id: "mute",
-  Config:Schema.object({
-    time:Schema.number()
+  description: "禁言用户",
+  Config: Schema.object({
+    time: Schema.number().min(0).description('禁言时长').required()
   }),
-  async run(ctx,config,features){
-    if(features.session && features.session.guildId)
-      await features.session.bot.muteGuildMember(features.session.guildId,features.session.userId,config.time*1000)
+  async run(ctx, config, features) {
+    if (features.session && features.session.guildId)
+      await features.session.bot.muteGuildMember(features.session.guildId, features.session.userId, config.time * 1000)
   }
 }
 
-const RecallMessageAction : Action = {
+const RecallMessageAction: Action = {
   id: "recall-message",
-  async run(ctx,config,features){
-    if(features.session && features.session.messageId && features.session.guildId)
-      await features.session.bot.deleteMessage(features.session.cid,features.session.messageId)
+  description: "撤回消息",
+  async run(ctx, config, features) {
+    if (features.session && features.session.messageId && features.session.guildId)
+      await features.session.bot.deleteMessage(features.session.cid, features.session.messageId)
   }
 }
 
-const KickMemberAction : Action = {
+const KickMemberAction: Action = {
   id: "kick-member",
-  async run(ctx,config,features){
-    if(features.session && features.session.guildId)
-      await features.session.bot.kickGuildMember(features.session.guildId,features.session.userId)
+  description: "移出用户",
+  async run(ctx, config, features) {
+    if (features.session && features.session.guildId)
+      await features.session.bot.kickGuildMember(features.session.guildId, features.session.userId)
   }
 }
 
