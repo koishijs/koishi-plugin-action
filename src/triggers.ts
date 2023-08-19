@@ -1,12 +1,12 @@
-import {Events} from "koishi";
-import {Trigger} from "./runtime";
+import { Events, Session } from "koishi";
+import { Trigger } from "./runtime";
 
-export function EventTriggerFactory<T extends keyof Events>(event_name:T):Trigger {
+export function EventTriggerFactory<T extends keyof Events>(event_name: T): Trigger {
   return {
     id: event_name,
     apply(ctx, config, callback) {
-      ctx.on(event_name as keyof Events, (session) => {
-        callback({session})
+      ctx.on(event_name as keyof Events, (session: Session) => {
+        callback({ session })
       })
     }
   }
